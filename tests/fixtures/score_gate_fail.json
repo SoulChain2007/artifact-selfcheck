@@ -1,0 +1,6 @@
+{
+  "artifact_type": "code",
+  "gates": { "g1": true, "g2": true, "g3": true, "g4": false, "g5": true, "g6": true },
+  "sa": { "sa1": 5, "sa2": 5, "sa3": 5, "sa4": 5, "sa5": 5, "sa6": 5 },
+  "sr": { "sr1": 5, "sr2": 5, "sr3": 5, "sr4": 5, "sr5": 5, "sr6": 5 }
+}
