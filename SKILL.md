@@ -81,7 +81,7 @@ FIND 要有明确发现协议，旧检查器需显式适配，见 [selfcheck](re
 不要因累计两次、固定轮数到点或分数下降就强制写新规则；它们触发调查和决策。
 自主元评审一次一个可独立验证的变更单元；用户明确授权版本维护可批处理，每项各有测试与回滚依据。
 准入流程和失败回滚见 [learning](references/learning.md)，class 与预算见 [iteration](references/iteration.md)。
-候选不得成为本轮强制验收依据；2.7 的判据目标对齐案例保留，但其旧实验的独立准入尚无后续记录，见 [lenses](references/lenses.md)。
+候选不得成为本轮强制验收依据；通用方法必须按当前证据完成准入，不因旧版记录或发行复制而自动转正，见 [lenses](references/lenses.md)。
 
 ## 交付内容与边界
 

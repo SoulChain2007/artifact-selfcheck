@@ -1,29 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""anchor_and_support.py — 锚点级引用解析 + 来源支撑性抽检（判据按类型分档）
-
-本轮"举一反三"的两个新缺口（2026-09-26，由**透镜覆盖率矩阵**定位到 L5 可验证性最薄后设计）：
-
-  A 锚点级引用解析 —— 引用写成 `docs/54 §1.15` 时，**文件解析得到 ≠ 那一节还在**。
-    文档重构/改编号之后，编号能命中、节号却已经飞了；旧的检查（sample_trace）只看文件能不能解析。
-    实测：某项目 1793 条带 §锚点的引用里 **7 处锚点在目标文件里找不到**（全指向 docs/79 §3.7）。
-
-  B 来源支撑性抽检 —— "来源存在" ≠ "来源支撑我的这句话"（skill sourcing.md 第四步的判据）。
-    做法：抽 N 条带 authority 的条目，看**条目名是否真出现在被引文件里**。
-    ⛔ **判据必须按类型分档**：抽象条目（`Seal vs Monster`、`情感原点 vs 阈值`）本来就不会以名字出现，
-    拿名字判它就是误报 —— 实测某项目抽 40 条命中 19/40，其中未命中的多属抽象类，
-    所以本脚本把它们**分开报**，抽象类只作"需人工判读"，不判生效。
-
-外部依据（准入台账已登记）：
-  · CitePrism（arXiv 2605.16000）："Citation context…all affect whether a reference appropriately
-    supports a local claim." ⇒ B 的判据方向有先例
-  · VeriCite（arXiv 2510.11394）：行内引用核验可减少幻觉、便于人工复核
-  · 锚点类检查：未命中先例 ⇒ 自创，标 weak
-
-用法：
-    python anchor_and_support.py --entries <产物根> --docs <文档根> [--n 40] [--seed S] [--json]
-退出码：0 = 无悬空锚点且具名类支撑率达阈值；1 = 有（明细见输出）
-"""
+"""Heuristic anchor resolution and source-support leads for schema-compatible world data."""
 import argparse
 import collections
 import glob

@@ -67,7 +67,7 @@ def main():
         root = args.root.resolve()
         if args.command == 'manifest':
             result = inventory(root)
-            (root / MANIFEST).write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+            (root / MANIFEST).write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
         elif args.command == 'verify':
             result = verify(root)
         else:

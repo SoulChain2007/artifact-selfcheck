@@ -1,24 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""sampling_audit.py — L6 注意力层：报告"说的覆盖面"与"给的证据"是否匹配
-
-补的是透镜矩阵最后一个薄点：L6 注意力限制。已有检查器只查"报告里有没有抽样声明"，
-但**声明可以是空的** —— 写了"抽 5 / 池 1270"却一条样本读数都没给，读者无法验证它是真抽了，
-还是抄了一个数字。所以本脚本把 L6 变成三条机器判据：
-
-  ① **声明与证据对得上**：默认写了"抽 N"须有 N 个独立样本读数
-     （每行一个样本标识〔路径或 ID〕+ 独立读数，重复标识只计一次），否则判 FIND。
-     显式 --min-item-ratio < 1 仅为启发式容差；低于 N 条仍标 evidence_complete=false。
-  ② **覆盖面声明**：抽样少于池子时，必须写出"只对抽样框负责 / 其余 M-N 未查"这类话，
-     否则读者会把抽样结论当成全量结论。
-  ③ **穷尽要说总量**：写"穷尽 / 全量读数"就必须给出池大小或条目总数；
-     ⛔ 且**不许**在没有任何覆盖面声明时写"全库健康 / 整库无问题"（越界，判 FAIL）。
-
-用法：
-    python sampling_audit.py --reports <报告目录> [--glob "自检报告_第*批_*.md"] [--last 20]
-                             [--json] [--min-item-ratio 1.0]
-退出码：0 = CLEAN；1 = FIND（含协议标记）；2 = ERROR（运行/输入失败）
-"""
+"""Validate sampling claims against explicit item-level readings and coverage declarations."""
 import argparse
 import glob
 import io

@@ -1,25 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""deep_audit.py — 深度四问：镜像一致性 / 反证边界 / 生活链可执行性 / 分母深度 / 抽样纪律
-
-本轮（2026-09-26 第二轮"举一反三"，用户要求四条全做）由**透镜覆盖率矩阵**定位出的薄点：
-  ① L3 内部一致 的深水区 —— **设定集 ↔ 机读镜像**（`content/rules/*.yaml`）逐字段对账：
-     设定说 Tactic 的 allowed_ops 是这 20 个，游戏侧的表也必须是这 20 个；两个真相源一旦漂移，
-     玩家看到的规则与设定就不是一回事了。
-  ② L1 可证伪性 —— **反证/边界闭合**：每条法则/判据都该有"不许什么"的边界条目或反例；
-     只有正面定义、没有任何边界 = 这条规则不可证伪，等于没立。
-  ③ 可执行性/日常性 —— **一天的生活链**：吃、住、交易、纠纷、病、葬、计时，每一环都要有条目、
-     且要落在具体国家/地区上；某环缺或悬空 ⇒ 这个世界"住不进去"。
-  ④ L2 分母深度 —— 三套外部分母"整类未枚举=0"只说明**每类都有一个代币**；本问量**每类的厚度**，
-     把 ≤2 条 designed 的类标为"代币覆盖"。
-  ⑤ L6 抽样纪律 —— 报告是否按自己的抽样声明说话：出现"抽样 N/池 M"就打勾；
-     出现"全库健康/全部通过"却没有抽样声明 ⇒ 判越界。
-
-用法：
-    python deep_audit.py --entries <产物根> [--mirror <镜像yaml>] [--reports <报告目录>]
-                         [--report-glob "*.md"] [--last 6] [--json]
-退出码：0 = 四问无发现；1 = 有发现（明细见输出）
-"""
+"""Heuristic depth checks for structured world data. Findings require project-specific interpretation."""
 import argparse
 import collections
 import glob
