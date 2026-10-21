@@ -1,6 +1,2 @@
-# 全仓统一为 LF（正文为 Markdown / Python；PowerShell 脚本在 LF 下同样可跑）
 * text=auto eol=lf
-
-*.png binary
-*.jpg binary
 *.zip binary

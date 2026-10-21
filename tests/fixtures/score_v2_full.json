@@ -1,0 +1,14 @@
+{
+  "schema_version": 2,
+  "mode": "full",
+  "artifact_type": "docs",
+  "external_claims": true,
+  "gates": {"g1":true,"g2":true,"g3":true,"g4":true,"g5":true,"g6":true},
+  "evidence": {"g1":["spec.md:12"],"g2":"checks.log:3","g3":"search-log.md:8","g4":"sensitivity.log:7","g6":"trace.md:9"},
+  "g4_kind": "sensitivity",
+  "sensitivity_valid": true,
+  "reviewer": "independent-session-B",
+  "review_evidence": ["review.md:17"],
+  "sa": {"sa1":5,"sa2":5,"sa3":5,"sa4":5,"sa5":5,"sa6":5},
+  "sr": {"sr1":5,"sr2":5,"sr3":5,"sr4":5,"sr5":5,"sr6":5}
+}

@@ -1,3 +1,5 @@
 {"batch":1,"date":"2026-09-01","lens":"应有↔实有","class":"module_not_closed","fixed":"R-1","verify":"第 2 批：powershell -File check.ps1 期望 FAIL=0"}
 {"batch":1,"date":"2026-09-01","lens":"应有↔实有","class":"","fixed":"R-2","verify":"第 2 批：Test-Path 目标文件为 True"}
-{"batch":2,"date":"2026-09-02","lens":"一致性","class":"numbering_gap","fixed":"R-3","verify":"第 3 批：文档审计器 0 错"}
+{"batch":2,"date":"2026-09-02","lens":"一致性","class":"numbering_gap","fixed":"R-3","verify":"第 3 批：docaudit 0 错"}
+{"batch":3,"date":"2026-09-03","lens":"声称<->实存/引用完整","class":"face_map_flip","fixed":"R-4","verify":"第 4 批：python check_uv_faces.py 期望 exit 0"}
+{"batch":4,"date":"2026-09-04","lens":"溯源复核","class":"src_trace","fixed":"R-5","verify":"第 5 批：python trace.py 期望命中 0 缺失"}

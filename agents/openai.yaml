@@ -1,0 +1,6 @@
+interface:
+  display_name: "产物自检 Artifact Selfcheck"
+  short_description: "按风险核对真实产物与需求，保留项目经验，经证据验证后自学与回滚"
+  default_prompt: "用 $artifact-selfcheck 检查本次交付，按风险选档，核实际入口与证据，注明范围和未验证项，并记录适用的经验反馈。"
+policy:
+  allow_implicit_invocation: true

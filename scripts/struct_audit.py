@@ -19,7 +19,7 @@
 
 用法：
     python struct_audit.py --root <产物根> [--ledger <台账 jsonl>] [--vocab <词表文件>]
-                           [--scale "S=40"] [--field-state state] [--json]
+                           [--scale "S=40"] [--field-world-state world_state] [--json]
 退出码：0 = 五问皆无发现；1 = 有发现（明细见输出）
 """
 import argparse
@@ -80,7 +80,7 @@ def main():
     ap.add_argument("--skill-root", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     ap.add_argument("--scale", action="append", default=[],
                     help='设定里的数量级，形如 "S=40"（字段取值=数字）；与库内同字段取值的条目数比对')
-    ap.add_argument("--field-state", default="state")
+    ap.add_argument("--field-world-state", default="world_state")
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
     E = load(a.root)
@@ -137,10 +137,10 @@ def main():
     # ⑤ 时序闭合：状态字段的取值分布
     dist = collections.Counter()
     for d in E.values():
-        v = (d.get("fields") or {}).get(a.field_state)
+        v = (d.get("fields") or {}).get(a.field_world_state)
         if v:
             dist[str(v)[:16]] += 1
-    findings["timeline_state"] = {"field": a.field_state, "distribution": dict(dist),
+    findings["timeline_state"] = {"field": a.field_world_state, "distribution": dict(dist),
                                   "only_present": len(dist) <= 1}
 
     n_find = len(findings.get("infra_vocab_drift", {}).get("outside_vocab", [])) \

@@ -17,7 +17,7 @@
 
 用法：
     python chain_walk.py --root <产物根> --n 2 --seed 20260926
-    python chain_walk.py --root <产物根> --id ITEM-0001      # 指定条目
+    python chain_walk.py --root <产物根> --id CARD-PRINT-024      # 指定条目
     python chain_walk.py --root <产物根> --n 2 --json
 退出码：0 = 抽样条目都有 ≥2 条闭环链；1 = 有断链/缺链（明细见输出）
 """
@@ -40,7 +40,7 @@ try:
 except ImportError:
     sys.exit("需要 PyYAML：用装了 pyyaml 的解释器运行")
 
-# 默认映射（默认按「设定集」类产物；换域改这里或用 --type-map）
+# 默认映射（本项目＝设定集；换项目改这里或用 --type-map）
 ACQUIRE_TYPES = ("print", "material", "food", "medicine", "item", "vehicle", "relic")
 CHAIN_A_TYPES = ("market", "channel", "price")          # 购买链所需的功能类型
 CHAIN_B_TYPES = ("beast", "flora", "material", "chain")  # 自制链所需：产出源 + 材料 + 生产链
@@ -97,7 +97,7 @@ def main():
     def resolve(name):
         if name in by_name:
             return by_name[name]
-        for n, i in by_name.items():          # 允许"钢锭(基底)"这类包含式命中
+        for n, i in by_name.items():          # 允许"霜王牙(基底)"这类包含式命中
             if name and (name in n or n in name):
                 return i
         return None
